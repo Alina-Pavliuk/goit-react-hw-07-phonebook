@@ -1,0 +1,24 @@
+{
+  "contacts": [
+    {
+      "name": "Pavliuk Alina",
+      "number": "0506650745",
+      "id": 1
+    },
+    {
+      "name": "Sara Jonsan",
+      "number": "0936667788",
+      "id": 2
+    },
+    {
+      "name": "Stas Chernetsky",
+      "number": "0668883232",
+      "id": 3
+    },
+    {
+      "name": "Kat Pavlowa  ",
+      "number": "0507767766",
+      "id": 4
+    }
+  ]
+}
