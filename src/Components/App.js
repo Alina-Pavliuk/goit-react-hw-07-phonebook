@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -13,13 +13,6 @@ import * as actions from '../redux/action/contacts';
 import operations from '../redux/operations/contactOperations';
 import { allContactsSelector, filterSelector, getFilteredContacts } from '../redux/selectors/contacts-selectors';
 
-// const filterContacts = (contacts, filter) => {
-//   if (contacts.length === 0) {
-//     return [];
-//   }
-//   return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-// }
-
 const App = () => {
   const contacts = useSelector(allContactsSelector);
   const filter = useSelector(filterSelector);
@@ -29,35 +22,22 @@ const App = () => {
   const [start, setStart] = useState(false);
   const [alert, setAlert] = useState(false);
 
-  // console.log(getContacts(contacts, filter));
-  // const firstRender = useRef(false);
-
-  // useEffect(() => {
-  //   if (firstRender.current) {
-  //     localStorage.setItem('contacts', JSON.stringify(contacts));
-  //   } else {
-  //     firstRender.current = true;
-  //   }
-  // }, [contacts]);
-
   useEffect(() => {
     dispatch(operations.getContacts());
-  }, [])
-  console.log(contacts);
+    setStart(true);
+  }, [dispatch])
+
   const filterHandler = (e) => {
     dispatch(actions.editInputFilter(e.target.value));
   }
 
   const removeContact = (id) => (e) => {
     dispatch(operations.removeContact(id));
-
   }
 
   const addContact = (singleContact) => {
     dispatch(operations.addContact(singleContact))
   }
-
-  // const filteredContacts = filterContacts(contacts, filter);
 
   return (
     <div className={stylesApp.wrapper}>

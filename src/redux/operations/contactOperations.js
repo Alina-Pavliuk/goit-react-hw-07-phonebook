@@ -34,7 +34,7 @@ const getContacts = () => async (dispatch) => {
 const removeContact = id => async (dispatch) => {
   try {
     dispatch(removeContactsRequest());
-    const result = await axios.delete(`http://localhost:5000/contacts/${id}`);
+    await axios.delete(`http://localhost:5000/contacts/${id}`);
     dispatch(removeContactsSuccess(id));
   } catch (error) {
     dispatch(removeContactsError(error));
